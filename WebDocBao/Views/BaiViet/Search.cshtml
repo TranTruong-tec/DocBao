@@ -1,0 +1,25 @@
+﻿@model List<WebDocBao.Models.BaiViet>
+
+@{
+    foreach (var item in Model)
+    {
+        <div id="productDisplay">
+            <a href="@Url.Action("XemChiTiet","BaiViet",new{@id=item.maBaiViet.Trim()})">
+            </a>
+            <br />
+            <div id="hinh">
+                <img src="~/Content/images/@item.hinhAnh" width="150" height="150" align="left" hspace="10" />
+            </div>
+            <b>Tên bài viết </b> @item.tuaBaiViet
+            <br />
+            <b>Nội dung tóm tắt:</b> @item.noiDungTomTat
+            <br />
+            <a href="@Url.Action("XemChiTiet", "BaiViet", new { @id = item.maBaiViet.Trim() })">
+                Xem chi tiết
+            </a>
+        </div>
+
+
+
+    }
+}

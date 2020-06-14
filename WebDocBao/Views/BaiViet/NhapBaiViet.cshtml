@@ -1,0 +1,109 @@
+﻿@model WebDocBao.Models.BaiViet
+
+@{
+    ViewBag.Title = "NhapBaiViet";
+    Layout = "~/Views/Shared/_LayoutWEB.cshtml";
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+}
+
+
+
+@using (Html.BeginForm("NhapBaiViet", "BaiViet", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal" style="padding-left:15px;">
+        <h3 style="color:red"> Nhập Bài Viết</h3>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.tuaBaiViet, new
+       {
+           @class = "control-label col-md-2"
+       })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.tuaBaiViet)
+                @Html.ValidationMessageFor(model => model.tuaBaiViet)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.noiDungTomTat, new { @class = "control-lable col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.noiDungTomTat)
+                @Html.ValidationMessageFor(model => model.noiDungTomTat)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.noiDungChinh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.noiDungChinh, new { @class = "ckeditor", @name = "editor" })
+                @Html.ValidationMessageFor(model => model.noiDungChinh)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ngayDang, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ngayDang, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ngayDang, "", new { @class = "text-danger" })
+                </div>
+
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.maLoai, "maLoai", new { @class = "control-lable col" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.maLoai, (SelectList)ViewBag.LoaiBaiViet, string.Empty)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.hinhAnh, "hinhAnh", new { @class = "control-label col-md-2" })
+                <input type="file" name="myfileImage" class="fileupload1" /><hr />
+
+                <img src="@ViewBag.hinhAnh" id="dvreview1" />
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" id="send" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Quay về", "Login", "Admin")
+</div>
+<script language="javascript" type="text/javascript">
+    var ckeditor;
+    function createEditor(languageCode, id) {
+        var editor = CKEDITOR.replace(id, { language: languageCode });
+    }
+    $(function () { createEditor('vi', 'txtNoiDungChinh')})
+</script>
+
+@section scripts
+{
+    <script>
+        $(function () {
+            $("#fileupload").change(function () {
+                var regex = /^[a-zA-Z0-9\s_\\.-:]+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+                if (regex.test($(this).val().toLowerCase())) {
+                    if (typeof (FileReader) != "undefind") {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            $("#dvreview1").attr("src", e.target.result);
+                        }
+                        reader.readAsDataURL($(this)[0].files[0]);
+                    } else {
+                        alert("chon file chua hop le");
+                    }
+                }
+            });
+        });
+    </script>
+}
