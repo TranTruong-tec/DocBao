@@ -3,15 +3,63 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebDocBao.Models;
+using System.Web.Security;
+using System.Security;
 
 namespace WebDocBao.Controllers
 {
     public class AdminController : Controller
     {
         // GET: Admin
+        private DocBaoEntities db = new DocBaoEntities();
         public ActionResult Index()
         {
+            List<TaiKhoan> lst = db.TaiKhoans.ToList<TaiKhoan>();
+            return View(lst);
+        }
+        public ActionResult Login()
+        {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(TaiKhoan tk, FormCollection f)
+        {
+
+            string username = f["maTaiKhoan"].ToString();
+            string password = f["matKhau"].ToString();
+
+            if (CheckUser(username, password))
+            {
+
+                FormsAuthentication.SetAuthCookie(tk.maTaiKhoan, true);
+                return RedirectToAction("Index", "Admin");
+
+            }
+
+            return View(tk);
+
+
+        }
+
+
+        private bool CheckUser(string username, string password)
+        {
+            using (var db = new DocBaoEntities())
+            {
+                var kq = db.TaiKhoans.Where(x => x.maTaiKhoan == username && x.matKhau == password).ToList<TaiKhoan>();
+                if (kq.Count() > 0)
+                    return true;
+                return false;
+
+            }
+        }
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Admin");
         }
     }
 }
