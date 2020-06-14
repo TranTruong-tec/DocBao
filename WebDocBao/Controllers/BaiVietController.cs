@@ -11,7 +11,7 @@ namespace WebDocBao.Controllers
     public class BaiVietController : Controller
     {
         // GET: BaiViet
-        private DocBaoEntities db = new DocBaoEntities();
+        private DocBaoEntities1 db = new DocBaoEntities1();
 
         public ActionResult XemChiTiet(string maBV)
         {
@@ -63,13 +63,13 @@ namespace WebDocBao.Controllers
 
         public ActionResult GetTop()
         {
-            db = new DocBaoEntities();
+            db = new DocBaoEntities1();
             var data = db.BaiViets.OrderByDescending(x => x.tuaBaiViet).Take(10).ToList();
             return View(data);
         }
         public ActionResult Search(string query)
         {
-            db = new DocBaoEntities();
+            db = new DocBaoEntities1();
             List<BaiViet> list = db.BaiViets.Where(x =>
                 x.tuaBaiViet.ToLower().Contains(query.ToLower())).ToList<BaiViet>();
             return PartialView(list);
