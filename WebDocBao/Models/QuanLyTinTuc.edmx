@@ -57,6 +57,42 @@
           <Property Name="diaChi" Type="nvarchar" MaxLength="100" />
           <Property Name="sdt" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_BaiViet_LoaiBaiViet">
+          <End Role="LoaiBaiViet" Type="Self.LoaiBaiViet" Multiplicity="0..1" />
+          <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiBaiViet">
+              <PropertyRef Name="maLoai" />
+            </Principal>
+            <Dependent Role="BaiViet">
+              <PropertyRef Name="maLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_BaiViet">
+          <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BaiViet">
+              <PropertyRef Name="maBaiViet" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="maBaiViet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_TaiKhoan">
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaiKhoan">
+              <PropertyRef Name="maTaiKhoan" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="maTaiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -94,6 +130,18 @@
           <EntitySet Name="LoaiBaiViet" EntityType="Self.LoaiBaiViet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BaiViet_LoaiBaiViet" Association="Self.FK_BaiViet_LoaiBaiViet">
+            <End Role="LoaiBaiViet" EntitySet="LoaiBaiViet" />
+            <End Role="BaiViet" EntitySet="BaiViet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_BaiViet" Association="Self.FK_Comment_BaiViet">
+            <End Role="BaiViet" EntitySet="BaiViet" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_TaiKhoan" Association="Self.FK_Comment_TaiKhoan">
+            <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -112,8 +160,8 @@
           <Property Name="maLoai" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="hinhAnh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="soLuotXem" Type="Int32" />
-          <NavigationProperty Name="LoaiBaiViet" Relationship="DocBaoModel.LoaiBaiVietBaiViet" FromRole="BaiViet" ToRole="LoaiBaiViet" />
-          <NavigationProperty Name="Comments" Relationship="DocBaoModel.BaiVietComment" FromRole="BaiViet" ToRole="Comment" />
+          <NavigationProperty Name="LoaiBaiViet" Relationship="Self.FK_BaiViet_LoaiBaiViet" FromRole="BaiViet" ToRole="LoaiBaiViet" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_BaiViet" FromRole="BaiViet" ToRole="Comment" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
@@ -124,8 +172,8 @@
           <Property Name="ngayComment" Type="DateTime" Precision="3" />
           <Property Name="maBaiViet" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
           <Property Name="maTaiKhoan" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="TaiKhoan" Relationship="DocBaoModel.TaiKhoanComment" FromRole="Comment" ToRole="TaiKhoan" />
-          <NavigationProperty Name="BaiViet" Relationship="DocBaoModel.BaiVietComment" FromRole="Comment" ToRole="BaiViet" />
+          <NavigationProperty Name="BaiViet" Relationship="Self.FK_Comment_BaiViet" FromRole="Comment" ToRole="BaiViet" />
+          <NavigationProperty Name="TaiKhoan" Relationship="Self.FK_Comment_TaiKhoan" FromRole="Comment" ToRole="TaiKhoan" />
         </EntityType>
         <EntityType Name="LoaiBaiViet">
           <Key>
@@ -133,7 +181,7 @@
           </Key>
           <Property Name="maLoai" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="tenLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="BaiViets" Relationship="DocBaoModel.LoaiBaiVietBaiViet" FromRole="LoaiBaiViet" ToRole="BaiViet" />
+          <NavigationProperty Name="BaiViets" Relationship="Self.FK_BaiViet_LoaiBaiViet" FromRole="LoaiBaiViet" ToRole="BaiViet" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -156,14 +204,62 @@
           <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="diaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="sdt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Comments" Relationship="DocBaoModel.TaiKhoanComment" FromRole="TaiKhoan" ToRole="Comment" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_TaiKhoan" FromRole="TaiKhoan" ToRole="Comment" />
         </EntityType>
-        <EntityContainer Name="DocBaoEntities" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK_BaiViet_LoaiBaiViet">
+          <End Role="LoaiBaiViet" Type="Self.LoaiBaiViet" Multiplicity="0..1" />
+          <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiBaiViet">
+              <PropertyRef Name="maLoai" />
+            </Principal>
+            <Dependent Role="BaiViet">
+              <PropertyRef Name="maLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_BaiViet">
+          <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BaiViet">
+              <PropertyRef Name="maBaiViet" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="maBaiViet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_TaiKhoan">
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaiKhoan">
+              <PropertyRef Name="maTaiKhoan" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="maTaiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DocBaoEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BaiViets" EntityType="Self.BaiViet" />
           <EntitySet Name="Comments" EntityType="Self.Comment" />
           <EntitySet Name="LoaiBaiViets" EntityType="Self.LoaiBaiViet" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
+          <AssociationSet Name="FK_BaiViet_LoaiBaiViet" Association="Self.FK_BaiViet_LoaiBaiViet">
+            <End Role="LoaiBaiViet" EntitySet="LoaiBaiViets" />
+            <End Role="BaiViet" EntitySet="BaiViets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_BaiViet" Association="Self.FK_Comment_BaiViet">
+            <End Role="BaiViet" EntitySet="BaiViets" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_TaiKhoan" Association="Self.FK_Comment_TaiKhoan">
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -194,18 +290,6 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <AssociationSet Name="LoaiBaiVietBaiViet" Association="DocBaoModel.LoaiBaiVietBaiViet">
-            <End Role="LoaiBaiViet" EntitySet="LoaiBaiViets" />
-            <End Role="BaiViet" EntitySet="BaiViets" />
-          </AssociationSet>
-          <AssociationSet Name="TaiKhoanComment" Association="DocBaoModel.TaiKhoanComment">
-            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
-            <End Role="Comment" EntitySet="Comments" />
-          </AssociationSet>
-          <AssociationSet Name="BaiVietComment" Association="DocBaoModel.BaiVietComment">
-            <End Role="BaiViet" EntitySet="BaiViets" />
-            <End Role="Comment" EntitySet="Comments" />
-          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -218,24 +302,12 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <Association Name="LoaiBaiVietBaiViet">
-          <End Type="DocBaoModel.LoaiBaiViet" Role="LoaiBaiViet" Multiplicity="1" />
-          <End Type="DocBaoModel.BaiViet" Role="BaiViet" Multiplicity="*" />
-        </Association>
-        <Association Name="TaiKhoanComment">
-          <End Type="DocBaoModel.TaiKhoan" Role="TaiKhoan" Multiplicity="1" />
-          <End Type="DocBaoModel.Comment" Role="Comment" Multiplicity="*" />
-        </Association>
-        <Association Name="BaiVietComment">
-          <End Type="DocBaoModel.BaiViet" Role="BaiViet" Multiplicity="1" />
-          <End Type="DocBaoModel.Comment" Role="Comment" Multiplicity="*" />
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DocBaoModelStoreContainer" CdmEntityContainer="DocBaoEntities">
+        <EntityContainerMapping StorageEntityContainer="DocBaoModelStoreContainer" CdmEntityContainer="DocBaoEntities1">
           <EntitySetMapping Name="BaiViets">
             <EntityTypeMapping TypeName="DocBaoModel.BaiViet">
               <MappingFragment StoreEntitySet="BaiViet">

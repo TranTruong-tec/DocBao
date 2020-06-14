@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebDocBao.Models.LoaiBaiViet>
+@{
+    ViewBag.Title = "QLLoaiBaiViet";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Quản lí loại bài viết</h2>
+<a href="@Url.Action("LogOut","Admin")">Đăng Xuất</a>
+<br />
+<a href="@Url.Action("NhapBaiViet","BaiViet")">Quay về</a>
+<p>
+    <a href="~/LoaiBaiViet/Them" title="them">Thêm thể loại </a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.maLoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tenLoai)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.maLoai)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.tenLoai)
+            </td>
+
+
+            <td>
+                <a href="~/LoaiBaiViet/Sua/@item.maLoai" title="Suu">Sửa </a> ||              
+                <a href="~/LoaiBaiViet/Xoa/@item.maLoai" title="Xoa">Xóa </a>
+            </td>
+        </tr>
+    }
+
+</table>
+

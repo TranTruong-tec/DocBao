@@ -20,7 +20,7 @@ namespace WebDocBao.Models
         public string maBaiViet { get; set; }
         public string maTaiKhoan { get; set; }
     
-        public virtual TaiKhoan TaiKhoan { get; set; }
         public virtual BaiViet BaiViet { get; set; }
+        public virtual TaiKhoan TaiKhoan { get; set; }
     }
 }

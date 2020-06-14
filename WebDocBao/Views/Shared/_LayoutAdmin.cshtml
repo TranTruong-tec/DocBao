@@ -1,0 +1,42 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title Trang dành cho quản trị</title>
+    <link href="~/Content/StyleSheetADMIN.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="main">
+
+
+        <div id="left-imag2">
+            <h3 style="font-size:30px"> ADMIN PAGE</h3>
+            <br />
+
+            <ul id="ql">
+                <li><a href="@Url.Action("TrangChu","TrangChu")">Trang Chủ</a></li>
+                <li><a href="@Url.Action("Login","Admin")">Đăng nhập Adnin</a></li>
+                <li><a href="@Url.Action("QLLoaiBaiViet","LoaiBaiViet")">Quản lý loại bài viết</a></li>
+                <li><a href="@Url.Action("QLBaiViet","BaiViet")">Quản lý bài viết</a></li>
+                <li><a href="@Url.Action("Index","Admin")">Quản lý tài khoản</a></li>
+                <li><a href="@Url.Action("QLBaiComment","Comment")">Quản lý comment</a></li>
+            </ul>
+
+        </div>
+
+        <div id="left">
+            <hr />
+            @RenderBody()
+        </div>
+
+        <div id="footer">
+            <hr />
+            Nhóm Gì Đây?<br />
+            
+        </div>
+    </div>
+
+</body>
+</html>
+

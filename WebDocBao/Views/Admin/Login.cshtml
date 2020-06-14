@@ -1,0 +1,31 @@
+﻿@model WebDocBao.Models.TaiKhoan
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "Đăng nhập không thành công");
+
+    <fieldset>
+        <legend>Login</legend>
+        <div>
+            @Html.LabelFor(u => u.maTaiKhoan)
+
+            @Html.TextBoxFor(u => u.maTaiKhoan)
+            @Html.ValidationMessageFor(model => model.maTaiKhoan)
+        </div>
+        <div>
+            @Html.LabelFor(u => u.matKhau)
+
+            @Html.PasswordFor(u => u.matKhau)
+            @Html.ValidationMessageFor(model => model.matKhau)
+        </div>
+        <input type="submit" value="Login" />
+    </fieldset>
+
+}
+

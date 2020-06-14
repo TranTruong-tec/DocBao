@@ -12,7 +12,7 @@ namespace WebDocBao.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
-        private DocBaoEntities db = new DocBaoEntities();
+        private  DocBaoEntities1 db = new DocBaoEntities1();
         public ActionResult Index()
         {
             List<TaiKhoan> lst = db.TaiKhoans.ToList<TaiKhoan>();
@@ -46,7 +46,7 @@ namespace WebDocBao.Controllers
 
         private bool CheckUser(string username, string password)
         {
-            using (var db = new DocBaoEntities())
+            using (var db = new DocBaoEntities1())
             {
                 var kq = db.TaiKhoans.Where(x => x.maTaiKhoan == username && x.matKhau == password).ToList<TaiKhoan>();
                 if (kq.Count() > 0)
