@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WebDocBao.Models.BaiViet>
+@{
+    ViewBag.Title = "QLBaiViet";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Thông tin bài viết</h2>
+
+<a href="@Url.Action("LogOut","Admin")">Đăng Xuất</a>
+<br />
+<a href="@Url.Action("NhapBaiViet","BaiViet")">Đăng Bài Viết</a>
+<br />
+<a href="@Url.Action("NhapBaiViet","BaiViet")">Quay về</a>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.maBaiViet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tuaBaiViet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngayDang)
+        </th>
+        <th>@Html.DisplayNameFor(model => model.maLoai)</th>
+        <th>@Html.DisplayNameFor(model => model.hinhAnh)</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.maBaiViet)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.tuaBaiViet)
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ngayDang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.maLoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hinhAnh)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.maBaiViet }) |
+                @Html.ActionLink("Details", "Details", new { id = item.maBaiViet }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.maBaiViet })
+            </td>
+        </tr>
+    }
+
+</table>
+

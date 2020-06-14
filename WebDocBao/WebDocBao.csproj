@@ -296,11 +296,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\BaiViet\NhapBaiViet.cshtml" />
+    <Content Include="Views\BaiViet\GetTop.cshtml" />
+    <Content Include="Views\BaiViet\Search.cshtml" />
+    <Content Include="Views\BaiViet\QLBaiViet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Admin\" />
-    <Folder Include="Views\BaiViet\" />
     <Folder Include="Views\LoaiBaiViet\" />
     <Folder Include="Views\TaiKhoan\" />
     <Folder Include="Views\TrangChu\" />
