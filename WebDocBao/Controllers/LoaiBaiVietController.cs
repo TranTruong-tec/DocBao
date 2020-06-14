@@ -11,7 +11,7 @@ namespace WebDocBao.Controllers
 {
     public class LoaiBaiVietController : Controller
     {
-        // GET: LoaiBaiViet
+        // GET: LoaibaiViet
         DocBaoEntities1 db = new DocBaoEntities1();
 
         public PartialViewResult LoaiBaiViet()
