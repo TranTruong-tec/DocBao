@@ -1,0 +1,89 @@
+﻿@model WebDocBao.Models.BaiViet
+
+@{
+    ViewBag.Title = "Xoa";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xoa</h2>
+
+<h3>Bạn Chắc Chắn Muốn Xóa?</h3>
+<div>
+    <h4>BaiViet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã Bài Viết:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.maBaiViet)
+        </dd>
+
+        <dt>
+            Tựa Bài Viết:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tuaBaiViet)
+        </dd>
+
+        <dt>
+            Nội Dung Tóm Tắt:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noiDungTomTat)
+        </dd>
+
+        <dt>
+           Nội Dung Chính:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noiDungChinh)
+        </dd>
+
+        <dt>
+            Ngày Đăng :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngayDang)
+        </dd>
+
+        <dt>
+            Mã Loại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiBaiViet.tenLoai)
+        </dd>
+
+        <dt>
+            Hình Ảnh:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hinhAnh)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.soLuotXem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soLuotXem)
+        </dd>*@
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -2408,6 +2408,8 @@
     <Content Include="Views\TaiKhoan\Edit.cshtml" />
     <Content Include="Views\Admin\Sua.cshtml" />
     <Content Include="Views\Admin\Xoa.cshtml" />
+    <Content Include="Views\BaiViet\Xoa.cshtml" />
+    <Content Include="Views\BaiViet\Sua.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

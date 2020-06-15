@@ -61,6 +61,86 @@ namespace WebDocBao.Controllers
             ViewBag.LoaiBaiViet = new SelectList(db.LoaiBaiViets, "maLoai", "tenLoai", bv.maLoai);
             return View(bv);
         }
+        [HttpGet]
+        public ActionResult Sua(string id)
+        {
+            BaiViet bv = db.BaiViets.SingleOrDefault(n => n.maBaiViet == id);
+            
+            if (bv == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            ViewBag.LoaiBaiViet = new SelectList(db.LoaiBaiViets, "maLoai", "tenLoai", bv.maLoai);
+            return View(bv);
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Sua(BaiViet bv, HttpPostedFileBase myfileImage)
+        {
+            ViewBag.LoaiBaiViet = new SelectList(db.LoaiBaiViets, "maLoai", "tenLoai");
+            if(myfileImage==null)
+            {
+                ViewBag.ThongBao = "Vui lòng chọn Ảnh Bìa";
+                return View();
+            }
+            else
+            {
+                if(ModelState.IsValid)
+                {
+                    var filename = Path.GetFileName(myfileImage.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/images"), filename);
+                    if (System.IO.File.Exists(path))
+                        ViewBag.ThongBao = "Hình ảnh đã tồn tại";
+                    else
+                    {
+                        myfileImage.SaveAs(path);
+                    }
+                    bv.hinhAnh = filename;
+                    UpdateModel(bv);
+                    db.SaveChanges();
+                }
+                return RedirectToAction("QLBaiViet");
+            }    
+        }
+        public ActionResult ChiTiet(string id)
+        {
+            BaiViet bv = db.BaiViets.SingleOrDefault(n => n.maBaiViet == id);
+            ViewBag.maBV = bv.maBaiViet;
+            if(bv == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }    
+            return View(bv);
+        }
+        [HttpGet]
+        public ActionResult Xoa(string id)
+        {
+            BaiViet bv = db.BaiViets.SingleOrDefault(n => n.maBaiViet == id);
+            ViewBag.maBV = bv.maBaiViet;
+            if (bv == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(bv);
+        }
+        [HttpPost,ActionName("Xoa")]
+        public ActionResult XacNhanXoa(string id)
+        {
+            BaiViet bv = db.BaiViets.SingleOrDefault(n => n.maBaiViet == id);
+            ViewBag.maBV = bv.maBaiViet;
+            if (bv == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            db.BaiViets.Remove(bv);
+            db.SaveChanges();
+            return RedirectToAction("QLBaiViet");
+        }
+
 
         public ActionResult GetTop()
         {
