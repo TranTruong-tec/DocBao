@@ -1,0 +1,93 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/StyleSheetWEB.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div id="main">
+        <div id="dautrang">
+            <a href="@Url.Action("TrangChu", "TrangChu")"> <img src="../../Content/images/logo.png" /></a>
+        </div>
+
+        <div>
+            @Html.Action("LoaiBaiViet", "LoaiBaiViet")
+        </div>
+
+        <!--tìm kiếm, đăng nhập, đăng ký, admin, liên lạc-->
+        <div id="ngay">
+            <div id="searchBV">
+                <div id="form-search">
+                    @using (Ajax.BeginForm("Search", "BaiViet",
+                      new AjaxOptions
+                      {
+                          UpdateTargetId = "main",
+                          InsertionMode = InsertionMode.Replace,
+                          HttpMethod = "POST"
+                      }, new { id = "searchForm" }))
+                    {
+                        <input type="text" name="query" oninput="changed()" placeholder="Nhập tên bài viết cần tìm" />
+                        <input type="submit" value="Search" />
+                    }
+                </div>
+
+                <script>
+                    function changed() {
+                        $("#searchForm").submit();
+                    }
+                </script>
+
+
+            </div>
+            &nbsp; &nbsp;
+            <a href="@Url.Action("DangKy", "TaiKhoan")">Đăng ký</a> |
+            @{
+                if (Request.Cookies["myCookies"] != null)
+                {
+                    HttpCookie ck = Request.Cookies["myCookies"];
+                    Session["maTaiKhoan"] = ck["name"].ToString();
+                }
+            }
+            @{
+                if (Session["maTaiKhoan"] != null)
+                {
+                    @Session["maTaiKhoan"].ToString()
+                    <a href="@Url.Action("DangXuat", "TaiKhoan", new { @strURL=Request.Url.ToString()})">|   Đăng xuất  | </a>
+                }
+            }
+
+            <a href="@Url.Action("DangNhap", "TaiKhoan")">Đăng nhập</a> |
+            @{
+                if (Session["maTaiKhoan"] == "admin")
+                {
+                    @Session["maTaiKhoan"].ToString()
+                    <a href="@Url.Action("adminPage", "TaiKhoan", new { @strURL=Request.Url.ToString()})"> Admin  |</a>
+                }
+            }
+            <a href="@Url.Action("Login", "Admin")">AdminPage  |</a>
+            <a href="@Url.Action("Help", "TrangChu")">Liên lạc </a>  &nbsp;  &nbsp;
+
+
+        </div>
+        <hr />
+
+        <div id="noidung">
+            @RenderBody()
+        </div>
+        <hr />      
+
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

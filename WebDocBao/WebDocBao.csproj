@@ -175,11 +175,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaiVietController.cs" />
-    <Compile Include="Controllers\DocBaoEntitles1.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoaiBaiVietController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\ParatialViewResult.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Global.asax.cs">
@@ -229,6 +227,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Css\MainStyle.css" />
+    <Content Include="Assets\Css\styleTrangChu.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -309,12 +308,13 @@
     <Content Include="Views\LoaiBaiViet\Them.cshtml" />
     <Content Include="Views\LoaiBaiViet\Xoa.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
+    <Content Include="Views\Shared\_LayoutTrangChu.cshtml" />
+    <Content Include="Views\TrangChu\TrangChu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\BaiViet\" />
     <Folder Include="Views\TaiKhoan\" />
-    <Folder Include="Views\TrangChu\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
