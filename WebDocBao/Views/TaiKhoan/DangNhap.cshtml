@@ -1,0 +1,47 @@
+﻿@model WebDocBao.Models.TaiKhoan
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Shared/_LayoutTrangChu.cshtml";
+}
+
+<div id="dangnhap" style="padding-left:20px">
+    @ViewBag.thongbao
+    <h2 style="color:red">Đăng Nhập</h2>
+
+    @using (Html.BeginForm("DangNhap", "TaiKhoan", new { @strURL = Request.Url.ToString() }))
+    {
+
+        @Html.ValidationSummary(true, "Thông tin đăng nhập chưa hợp lệ hoặc tài khoản không tồn tại");
+
+        <div class="form-horizontal">
+            <div class="form-group">
+
+                @Html.Label("Tên Đăng Nhập", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.maTaiKhoan)
+                    @Html.ValidationMessageFor(model => model.maTaiKhoan)
+                </div>
+
+            </div>
+            <div class="form-group">
+                @Html.Label("Mật Khẩu", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.matKhau)
+                    @Html.ValidationMessageFor(model => model.matKhau)
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Đăng Nhập" name="btnDangNhap" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+        <p style="color:red">@Html.ActionLink("Đăng Ký Tài Khoản Mới", "DangKy", "TaiKhoan") (*Chưa có Tài Khoản, Đăng Ký Ngay)</p>
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

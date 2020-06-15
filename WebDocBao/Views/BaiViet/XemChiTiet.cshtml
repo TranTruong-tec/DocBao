@@ -6,6 +6,9 @@
     Layout = "~/Views/Shared/_LayoutTrangChu.cshtml";
 }
 
+<link href="~/Assets/Css/styleTrangChu.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
 <script>
     $(function () {
         $("form").submit(function () {
@@ -62,41 +65,6 @@
 </div>
 <div id="link">@Html.ActionLink("Về trang trước", null, null, null, new { Href = Request.UrlReferrer })</div>
 
-<div id="Comment">
-    @using (Html.BeginForm("InsertComment", "Commment", new { @id = "f1", @strURL = Request.Url.ToString() }))
-    {
-        @Html.AntiForgeryToken()
-        <div class="form-horizontal">
-            <h4>Mời các bạn đóng góp ý kiến: </h4>
-            <hr />
-            @Html.LabelFor(model => model.noiDung)
-            <div class="col-md-10">
-                @Html.TextArea("txtNoiDung")
-                @Html.ValidationMessageFor(model => model.noiDung)
-            </div>
-        </div>
-
-        <div class="form-group">
-            Nhập tên người comment:
-            <br />
-            @if (Session["maTaiKhoan"] != null)
-            {
-                @Html.TextBox("txtMaTaiKhoan", Session["maTaiKhoan"].ToString())}
-            else
-            {
-                @Html.TextBox("txtMaTaiKhoan")
-            }
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btnsubmit" id="bsunmit" />
-
-            </div>
-
-        </div>
-    }
-</div>
 @{
     List<Comment> lstComment = (List<Comment>)ViewBag.DSComment;
     <div id="lstCom">

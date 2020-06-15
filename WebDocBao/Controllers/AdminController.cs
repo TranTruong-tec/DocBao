@@ -66,7 +66,7 @@ namespace WebDocBao.Controllers
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("Login", "Admin");
         }
     }
 }

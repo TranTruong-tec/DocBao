@@ -1,8 +1,9 @@
-﻿@model  List<WebDocBao.Models.BaiViet>
-@{
-    ViewBag.Title = "LoadBaiVietPartial";
-    Layout = "~/Views/Shared/_LayoutTrangChu.cshtml";
-}
+﻿
+@model  List<WebDocBao.Models.BaiViet>
+
+
+<link href="~/Assets/Css/styleTrangChu.css" rel="stylesheet" />
+<!--Load một danh mục bài viết -->
 
 @foreach (var item in Model)
 {
@@ -24,4 +25,3 @@
     </div>
 
 }
-

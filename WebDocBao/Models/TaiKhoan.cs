@@ -33,5 +33,6 @@ namespace WebDocBao.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
+        public string Captcha { get; set; }
     }
 }
