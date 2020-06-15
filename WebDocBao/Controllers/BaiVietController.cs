@@ -88,7 +88,7 @@ namespace WebDocBao.Controllers
 
         }
         //[Authorize(Users = "admin")]
-        [SessionTimeout]
+        //[SessionTimeout]
         public ActionResult QLBaiViet()
         {
             List<BaiViet> lst = db.BaiViets.ToList<BaiViet>();

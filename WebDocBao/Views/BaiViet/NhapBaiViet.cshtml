@@ -1,13 +1,10 @@
 ﻿@model WebDocBao.Models.BaiViet
-
-
 @{
     ViewBag.Title = "NhapBaiViet";
-    Layout = "~/Views/Shared/_LayoutWEB.cshtml";
-    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    Layout = "~/Views/Shared/_LayoutTrangChu.cshtml";
 }
-
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
 
 @using (Html.BeginForm("NhapBaiViet", "BaiViet", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -45,7 +42,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.ngayDang, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.ngayDang, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.ngayDang, new { htmlAttributes = new { @class = "form-control", type = "date" } })
                     @Html.ValidationMessageFor(model => model.ngayDang, "", new { @class = "text-danger" })
                 </div>
 
@@ -84,7 +81,7 @@
     function createEditor(languageCode, id) {
         var editor = CKEDITOR.replace(id, { language: languageCode });
     }
-    $(function () { createEditor('vi', 'txtNoiDungChinh')})
+    $(function () { createEditor('vi', 'txtNoiDungChinh') })
 </script>
 
 @section scripts
