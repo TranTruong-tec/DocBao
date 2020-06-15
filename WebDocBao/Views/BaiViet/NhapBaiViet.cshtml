@@ -16,10 +16,7 @@
         <hr />
         @Html.ValidationSummary(true)
         <div class="form-group">
-            @Html.LabelFor(model => model.tuaBaiViet, new
-       {
-           @class = "control-label col-md-2"
-       })
+            <label>Tự Bài Viết:</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.tuaBaiViet)
                 @Html.ValidationMessageFor(model => model.tuaBaiViet)
@@ -27,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.noiDungTomTat, new { @class = "control-lable col-md-2" })
+            <label>Nội dung tóm tắt:</label>
             <div class="col-md-10">
                 @Html.TextAreaFor(model => model.noiDungTomTat)
                 @Html.ValidationMessageFor(model => model.noiDungTomTat)
@@ -35,13 +32,13 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.noiDungChinh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label>Nội dung chính:</label>
             <div class="col-md-10">
                 @Html.TextAreaFor(model => model.noiDungChinh, new { @class = "ckeditor", @name = "editor" })
                 @Html.ValidationMessageFor(model => model.noiDungChinh)
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.ngayDang, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label>Ngày đăng:</label>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.ngayDang, new { htmlAttributes = new { @class = "form-control", type = "date" } })
                     @Html.ValidationMessageFor(model => model.ngayDang, "", new { @class = "text-danger" })
@@ -50,14 +47,14 @@
 
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.maLoai, "maLoai", new { @class = "control-lable col" })
+                <label>Mã Loại:</label>
                 <div class="col-md-10">
                     @Html.DropDownListFor(model => model.maLoai, (SelectList)ViewBag.LoaiBaiViet, string.Empty)
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.hinhAnh, "hinhAnh", new { @class = "control-label col-md-2" })
+                <label>Hình Ảnh:</label>
                 <input type="file" name="myfileImage" class="fileupload1" /><hr />
 
                 <img src="@ViewBag.hinhAnh" id="dvreview1" />
