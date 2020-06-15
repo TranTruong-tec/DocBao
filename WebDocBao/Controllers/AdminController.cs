@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using WebDocBao.Models;
 using System.Web.Security;
 using System.Security;
+using WebDocBao.CheckSession;
 
 namespace WebDocBao.Controllers
 {
@@ -24,7 +25,7 @@ namespace WebDocBao.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(TaiKhoan tk, FormCollection f)
+        public ActionResult Login(TaiKhoan tk,  FormCollection f)
         {
 
             string username = f["maTaiKhoan"].ToString();
@@ -34,8 +35,14 @@ namespace WebDocBao.Controllers
             {
 
                 FormsAuthentication.SetAuthCookie(tk.maTaiKhoan, true);
+                Session["maTaiKhoan"] = tk.maTaiKhoan.ToString();
+                Session["matKhau"] = tk.matKhau.ToString();
                 return RedirectToAction("Index", "Admin");
 
+            }
+            else
+            {
+                ModelState.AddModelError("", "Tên Đăng Nhập Hoặc Mật Khẩu Không Đúng !");
             }
 
             return View(tk);

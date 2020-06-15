@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebDocBao.Models;
 using System.Data.Entity;
+using WebDocBao.CheckSession;
 
 namespace WebDocBao.Controllers
 {
@@ -46,6 +47,7 @@ namespace WebDocBao.Controllers
             return View(lstBV);
         }
         //[Authorize(Users = "admin")]
+        [SessionTimeout]
         public ActionResult QLLoaiBaiViet()
         {
             List<LoaiBaiViet> lst = db.LoaiBaiViets.ToList<LoaiBaiViet>();

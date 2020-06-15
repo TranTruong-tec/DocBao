@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebDocBao.Models;
 using System.IO;
+using WebDocBao.CheckSession;
 
 namespace WebDocBao.Controllers
 {
@@ -87,6 +88,7 @@ namespace WebDocBao.Controllers
 
         }
         //[Authorize(Users = "admin")]
+        [SessionTimeout]
         public ActionResult QLBaiViet()
         {
             List<BaiViet> lst = db.BaiViets.ToList<BaiViet>();
