@@ -304,10 +304,14 @@
     <Content Include="Views\LoaiBaiViet\Sua.cshtml" />
     <Content Include="Views\LoaiBaiViet\Them.cshtml" />
     <Content Include="Views\LoaiBaiViet\Xoa.cshtml" />
+    <Content Include="Views\BaiViet\XemChiTiet.cshtml" />
+    <Content Include="Views\BaiViet\NhapBaiViet.cshtml" />
+    <Content Include="Views\BaiViet\GetTop.cshtml" />
+    <Content Include="Views\BaiViet\Search.cshtml" />
+    <Content Include="Views\BaiViet\QLBaiViet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\BaiViet\" />
     <Folder Include="Views\TaiKhoan\" />
     <Folder Include="Views\TrangChu\" />
   </ItemGroup>

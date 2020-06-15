@@ -1,0 +1,114 @@
+﻿@using WebDocBao.Models;
+@model Comment
+
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Views/Shared/_LayoutWEB.cshtml";
+}
+
+
+<link href="~/Content/StyleSheetWeb.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+    $(function () {
+        $("form").submit(function () {
+            if ($("[name='txtNoiDung']").val() == "") {
+                alert("Bạn chưa nhập nội dung!");
+                $("[name='txtNoiDung']").focus();
+                return false;
+            }
+            if ($("[name='txtMaTaiKhoan']").val() == "") {
+                alert("Bạn chưa nhập tên tài khoản!");
+                $("[name='txtMaTaiKhoan']").focus();
+                return false;
+            }
+        });
+    });
+</script>
+@*//Không cho khách hàng copy thông tin*@
+<script type="text/JavaScript">
+    function killCopy(e) {
+        return false
+    }
+    function reEnable() {
+        return true
+    }
+    document.onselectstart = new Function("return false")
+    if (window.sidebar) {
+        document.onmousedown = killCopy
+        document.onclick = reEnable
+    }
+</script>
+@*//Không cho click chuột phải*@
+<script type="text/JavaScript">
+    var message = "NoRightClicking";
+    function defeatIE() { if (document.all) { (message); return false; } }
+    function defeatNS(e) {
+        if (document.layers || (document.getElementById && !document.all))
+        { if (e.which == 2 || e.which == 3) { (message); return false; } }
+   } if (document.layers) { document.captureEvents(Event.MOUSEDOWN); document.onmousedown = defeatNS; }
+    else { document.onmouseup = defeatNS; document.oncontextmenu = defeatIE; }
+    document.oncontextmenu = new Function("return false")
+</script>
+
+
+
+@{BaiViet bv = (BaiViet)ViewBag.BaiViet;}
+<div id="chitiet">
+    <div id="tuaBaiViet" style="text-align:center">@bv.tuaBaiViet</div>
+    <br />
+    <img src="../../Content/images/@bv.hinhAnh" width="300" height="300" align="left" hspace="20" />
+    <br />
+    <div id="maLoai" style="">Loại bài viết:@ViewBag.TenLoaiBV</div>
+
+    <div id="Mota"><br />-@bv.noiDungChinh <br /></div>
+    <br />
+</div>
+<div id="link">@Html.ActionLink("Về trang trước", null, null, null, new { Href = Request.UrlReferrer })</div>
+
+<div id="Comment">
+    @using (Html.BeginForm("InsertComment", "Commment", new { @id = "f1", @strURL = Request.Url.ToString() }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <h4>Mời các bạn đóng góp ý kiến: </h4>
+            <hr />
+            @Html.LabelFor(model => model.noiDung)
+            <div class="col-md-10">
+                @Html.TextArea("txtNoiDung")
+                @Html.ValidationMessageFor(model => model.noiDung)
+            </div>
+        </div>
+
+        <div class="form-group">
+            Nhập tên người comment:
+            <br />
+            @if (Session["maTaiKhoan"] != null)
+            {
+                @Html.TextBox("txtMaTaiKhoan", Session["maTaiKhoan"].ToString())}
+            else
+            {
+                @Html.TextBox("txtMaTaiKhoan")
+            }
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btnsubmit" id="bsunmit" />
+
+            </div>
+
+        </div>
+    }
+</div>
+@{
+    List<Comment> lstComment = (List<Comment>)ViewBag.DSComment;
+    <div id="lstCom">
+        <h5>Các comment </h5>
+        @foreach (Comment c in lstComment)
+        {
+            <div style="border:1px dotted double"><h6>@c.maTaiKhoan:</h6><p>@c.noiDung</p></div>
+            <p style="text-align:right; font-style:italic">@c.ngayComment.ToString()</p>
+        }
+    </div>
+}
