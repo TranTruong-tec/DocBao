@@ -6,47 +6,50 @@ using System.Web;
 using System.Web.Mvc;
 using WebDocBao.Models;
 using System.Data.Entity;
+using System.Windows.Documents;
 
 namespace WebDocBao.Controllers
 {
     public class LoaiBaiVietController : Controller
     {
         // GET: LoaibaiViet
-        DocBaoEntities1 db = new DocBaoEntities1();
+        DocBaoEntitles1 db = new DocBaoEntities1();
 
-        public PartialViewResult LoaiBaiViet()
+        public ParatialViewResult LoaiBaiViet()
         {
-            List<LoaiBaiViet> l = db.LoaiBaiViets.ToList<LoaiBaiViet>();
-            return PartialView(l);
+            List < LoaiBaiViet > 1 = db.LoaiBaiViets.ToList<LoaiBaiViet>();
+            return ParatialView(1);
         }
 
-
-        public PartialViewResult BaiVietMoi()
+        private object GetLoaiBaiViets()
         {
-            List<LoaiBaiViet> l = db.LoaiBaiViets.ToList<LoaiBaiViet>();
-            return PartialView(l);
+            return db.LoaiBaiViets;
         }
 
-        public ViewResult BaiVietTheoLoai(string maLoai = "01")
+        public ParatialViewResult BaiVietMoi()
+        {
+            List <LoaiBaiViet> l = db.LoaiBaiViets.ToList<LoaiBaiViet>();
+            return ParatialView(1);
+        }
+
+        private ParatialViewResult ParatialView(int v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ViewResult BaiVietTheoLoai(String Maloai="01")
         {
 
-            LoaiBaiViet l = db.LoaiBaiViets.SingleOrDefault(n => n.maLoai == maLoai);
-            if (l == null)
+            LoaiBaiViet 1 = db.LoaiBaiViets.SingleOrDefault(n => n.Maloai == Maloai);
             {
                 Response.StatusCode = 404;
                 return null;
             }
-            List<BaiViet> lstBV = db.BaiViets.Where(n => n.maLoai == maLoai).OrderByDescending(n => n.ngayDang).ToList();
-            if (lstBV.Count == 0)
-            {
-                ViewBag.BaiViet = "Không có bài viết nào thuộc chủ đề " + l.tenLoai;
-            }
-
-            ViewBag.lstLoaiBV = db.LoaiBaiViets.ToList();
-            return View(lstBV);
         }
+
+
         //[Authorize(Users = "admin")]
-        public ActionResult QLLoaiBaiViet()
+        public ActionResult()
         {
             List<LoaiBaiViet> lst = db.LoaiBaiViets.ToList<LoaiBaiViet>();
             return View(lst);
@@ -58,7 +61,7 @@ namespace WebDocBao.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Them([Bind(Include = "maLoai, tenLoai")] LoaiBaiViet loai)
+        public ActionResult Them([Bind(Include = "Maloai, Tenloai")] LoaiBaiViet loai)
         {
             try
             {
@@ -75,7 +78,7 @@ namespace WebDocBao.Controllers
         }
         public ActionResult Sua(string id)
         {
-            var loai = db.LoaiBaiViets.Select(p => p).Where(p => p.maLoai == id).FirstOrDefault();
+            var loai = db.LoaiBaiViets.Select(p => p).Where(p => p.maloai == id).FirstOrDefault();
             return View(loai);
         }
         [HttpPost]
@@ -86,9 +89,9 @@ namespace WebDocBao.Controllers
             try
             {
 
-                var l = db.LoaiBaiViets.Select(p => p).Where(p => p.maLoai == editLoai.maLoai).FirstOrDefault();
+                var l = db.LoaiBaiViets.Select(p => p).Where(p => p.Maloai == editLoai.maLoai).FirstOrDefault();
                 l.tenLoai = editLoai.tenLoai;
-                db.SaveChanges();
+                db.SaveChange();
                 return RedirectToAction("QLLoaiBaiViet");
 
             }
@@ -102,7 +105,7 @@ namespace WebDocBao.Controllers
         }
         public ActionResult Xoa(string id)
         {
-            var loai = db.LoaiBaiViets.Select(p => p).Where(p => p.maLoai == id).FirstOrDefault();
+            var loai = db.LoaiBaiViets.Select(p => p).Where(p => p.Maloai == id).FirstOrDefault();
             return View(loai);
         }
         [HttpPost]
@@ -113,8 +116,8 @@ namespace WebDocBao.Controllers
             try
             {
 
-                var l = db.LoaiBaiViets.Select(p => p).Where(p => p.maLoai == id).FirstOrDefault();
-                db.LoaiBaiViets.Remove(l);
+                var l = db.LoaiBaiViets.Select(p => p).Where(p => p.Maloai == id).FirstOrDefault();
+                db.Loaibaiviets.Remove(l);
                 db.SaveChanges();
                 return RedirectToAction("QLLoaiBaiViet");
 
