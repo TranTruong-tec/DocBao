@@ -2404,6 +2404,10 @@
     <Content Include="Views\TaiKhoan\DangNhap.cshtml" />
     <Content Include="Views\TrangChu\LoadBaiVietPartial.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\TaiKhoan\Sua.cshtml" />
+    <Content Include="Views\TaiKhoan\Edit.cshtml" />
+    <Content Include="Views\Admin\Sua.cshtml" />
+    <Content Include="Views\Admin\Xoa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -68,5 +68,63 @@ namespace WebDocBao.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Login", "Admin");
         }
+        public ActionResult Sua(string id)
+        {
+            var tk = db.TaiKhoans.Select(p => p).Where(p => p.maTaiKhoan == id).FirstOrDefault();
+            return View(tk);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Sua(TaiKhoan editTK)
+        {
+
+            try
+            {
+
+                var l = db.TaiKhoans.Select(p => p).Where(p => p.maTaiKhoan == editTK.maTaiKhoan).FirstOrDefault();
+                l.tenDayDu = editTK.tenDayDu;
+                l.loaiTaiKhoan = editTK.loaiTaiKhoan;
+                l.email = editTK.email;
+                l.diaChi = editTK.diaChi;
+                l.sdt = editTK.sdt;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+
+            }
+            catch
+            {
+
+                return View();
+
+            }
+
+        }
+        public ActionResult Xoa(string id)
+        {
+            var tk = db.TaiKhoans.Select(p => p).Where(p => p.maTaiKhoan == id).FirstOrDefault();
+            return View(tk);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Xoa(string id, FormCollection f)
+        {
+
+            try
+            {
+
+                var tk = db.TaiKhoans.Select(p => p).Where(p => p.maTaiKhoan == id).FirstOrDefault();
+                db.TaiKhoans.Remove(tk);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+
+            }
+            catch
+            {
+
+                return View();
+
+            }
+
+        }
     }
 }

@@ -70,29 +70,36 @@
                     <tbody id="myTable">
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                
+                        <tr>
 
-                                <td>
-                                    @Html.DisplayFor(modelitem => item.maTaiKhoan)
-                                </td>                               
-                                <td>
-                                    @Html.DisplayFor(modelitem => item.tenDayDu)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelitem => item.loaiTaiKhoan)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelitem => item.email)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelitem => item.diaChi)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelitem => item.sdt)
-                                </td>
-                                
-                            </tr>
+
+                            <td>
+                                @Html.DisplayFor(modelitem => item.maTaiKhoan)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.tenDayDu)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.loaiTaiKhoan)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.diaChi)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.sdt)
+                            </td>
+                            <td>
+                                <a href="~/Admin/Sua/@item.maTaiKhoan" title="Suu">Sửa </a>
+
+                            </td>
+                            <td>
+                                <a href="~/Admin/Xoa/@item.maTaiKhoan" title="Xoa">Xóa </a>
+                            </td>
+
+                        </tr>
                         }
                     </tbody>
                 </table>
