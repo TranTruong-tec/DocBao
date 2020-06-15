@@ -47,7 +47,7 @@ namespace WebDocBao.Controllers
             return View(lstBV);
         }
         //[Authorize(Users = "admin")]
-        [SessionTimeout]
+        //[SessionTimeout]
         public ActionResult QLLoaiBaiViet()
         {
             List<LoaiBaiViet> lst = db.LoaiBaiViets.ToList<LoaiBaiViet>();
