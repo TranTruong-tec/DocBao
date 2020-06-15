@@ -1,0 +1,41 @@
+﻿@using WebDocBao.Models;
+@model List<BaiViet>
+@{
+    ViewBag.Title = "BaiVietTheoLoai";
+    Layout = "~/Views/Shared/_LayoutTrangChu.cshtml";
+}
+
+@{
+    <div>
+
+        @ViewBag.BaiViet
+        @foreach (var item in Model)
+        {
+            <div id="BaiViet">
+                <div id="ThongTin">
+                    @if (item.tuaBaiViet.Length < 30)
+                    {
+                        <div id="tuaBaiViet" title="@item.tuaBaiViet">@item.tuaBaiViet.</div>
+                    }
+                    else
+                    {
+                        <div id="tuaBaiViet" title="@item.tuaBaiViet">
+                            @item.tuaBaiViet.Substring(0, 30)...
+
+                        </div>
+                        <div id="hinh">
+                            <img src="../../Content/images/@item.hinhAnh" width="150" height="150" align="left" hspace="10" />
+                        </div>
+
+                        <div>@item.noiDungTomTat</div>
+                        <a href="@Url.Action("XemChiTiet", "BaiViet", new {@maBV=item.maBaiViet})">
+                            Xem chi tiết
+                        </a>
+                    }
+                </div>
+                <hr />
+            </div>
+        }
+    </div>
+}
+

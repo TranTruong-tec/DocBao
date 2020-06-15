@@ -1,0 +1,27 @@
+﻿@model  List<WebDocBao.Models.BaiViet>
+@{
+    ViewBag.Title = "LoadBaiVietPartial";
+    Layout = "~/Views/Shared/_LayoutTrangChu.cshtml";
+}
+
+@foreach (var item in Model)
+{
+    <div id="ThongTin">
+
+        <hr />
+        <div id="hinh">
+            <img src="~/Content/images/@item.hinhAnh" width="150" height="150" align="left" hspace="10" />
+        </div>
+        <div id="baiviet">
+            <h3> @item.tuaBaiViet</h3>
+
+            <p>@item.noiDungTomTat</p>
+            <a href="@Url.Action("XemChiTiet", "BaiViet", new {@maBV=item.maBaiViet})">
+                Xem chi tiết
+            </a>
+
+        </div>
+    </div>
+
+}
+

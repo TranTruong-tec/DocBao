@@ -58,11 +58,6 @@ namespace WebDocBao.Controllers
                 x.tuaBaiViet.ToLower().Contains(query.ToLower())).ToList<BaiViet>();
             return PartialView(list);
         }
-        public ActionResult Help()
-        {
-            ViewBag.Message = "Thông tin liên lạc";
-
-            return View();
-        }
+        
     }
 }
