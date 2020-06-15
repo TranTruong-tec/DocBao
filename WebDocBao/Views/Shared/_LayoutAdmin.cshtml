@@ -1,42 +1,152 @@
-﻿
+﻿@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>@ViewBag.Title Trang dành cho quản trị</title>
+        <link href="~/Content/StyleSheetADMIN.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div id="main">
+
+
+            <div id="left-imag2">
+                <h3 style="font-size:30px"> ADMIN PAGE</h3>
+                <br />
+
+                <ul id="ql">
+                    <li><a href="@Url.Action("TrangChu","TrangChu")">Trang Chủ</a></li>
+                    <li><a href="@Url.Action("Login","Admin")">Đăng nhập Adnin</a></li>
+                    <li><a href="@Url.Action("QLLoaiBaiViet","LoaiBaiViet")">Quản lý loại bài viết</a></li>
+                    <li><a href="@Url.Action("QLBaiViet","BaiViet")">Quản lý bài viết</a></li>
+                    <li><a href="@Url.Action("Index","Admin")">Quản lý tài khoản</a></li>
+                    <li><a href="@Url.Action("QLBaiComment","Comment")">Quản lý comment</a></li>
+                </ul>
+
+            </div>
+
+            <div id="left">
+                <hr />
+                @RenderBody()
+            </div>
+
+            <div id="footer">
+                <hr />
+                Nhóm Gì Đây?<br />
+
+            </div>
+        </div>
+
+    </body>
+    </html>*@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title Trang dành cho quản trị</title>
-    <link href="~/Content/StyleSheetADMIN.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Trang Quản Lý</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <!-- Our Custom CSS -->
+
+
+    <link href="~/Assets/Css/MainStyle.css" rel="stylesheet" />
+    <link rel="icon" href="~/favicon.ico" />
 </head>
+
 <body>
-    <div id="main">
 
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div id="dismiss">
+                <i class="fas fa-arrow-left"></i>
+            </div>
 
-        <div id="left-imag2">
-            <h3 style="font-size:30px"> ADMIN PAGE</h3>
-            <br />
+            <div class="sidebar-header">
+                <h3>Chức Năng</h3>
+            </div>
+            <ul class="list-unstyled components">
+                
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Đăng Bài</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            @Html.ActionLink("Quản Lý Bài Viết", "Index", "BaiViet")
+                        </li>
+                        <li>
+                            @Html.ActionLink("Quản Lý Thể Loại", "QLLoaiBaiViet", "LoaiBaiViet")
+                        </li>
 
-            <ul id="ql">
-                <li><a href="@Url.Action("TrangChu","TrangChu")">Trang Chủ</a></li>
-                <li><a href="@Url.Action("Login","Admin")">Đăng nhập Adnin</a></li>
-                <li><a href="@Url.Action("QLLoaiBaiViet","LoaiBaiViet")">Quản lý loại bài viết</a></li>
-                <li><a href="@Url.Action("QLBaiViet","BaiViet")">Quản lý bài viết</a></li>
-                <li><a href="@Url.Action("Index","Admin")">Quản lý tài khoản</a></li>
-                <li><a href="@Url.Action("QLBaiComment","Comment")">Quản lý comment</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    @Html.ActionLink("Thông Tin Tài Khoản", "Index", "Admin")
+                </li>
+
             </ul>
 
-        </div>
 
-        <div id="left">
-            <hr />
-            @RenderBody()
-        </div>
+        </nav>
 
-        <div id="footer">
-            <hr />
-            Nhóm Gì Đây?<br />
-            
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-warning">
+                        <i class="fas fa-align-left"></i>
+                    </button>
+                    <a href="#" class="navbar-brand justify-content-center Icon-team">
+                        <strong>Nhóm Gì Đây</strong>
+                    </a>
+                    <div class="dropdown">
+                        <button type="button" class="btn Icon-user" data-toggle="dropdown">
+                            <i class="fas fa-user"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            
+                            <a class="dropdown-item" href="/Admin/Logout">LogOut</a>
+                        </div>
+
+                    </div>
+                </div>
+            </nav>
+            <div class="container-fluid">
+                <div class="body-pagecontent">
+                    @RenderBody()
+                </div>
+
+                <!-- Footer -->
+                @Html.Partial("_FooterPartial")
+                <!-- Footer -->
+            </div>
         </div>
     </div>
+    
+ 
+
+    @*<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>*@
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
 
 </body>
+
 </html>
 

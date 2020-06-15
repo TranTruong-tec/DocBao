@@ -1,0 +1,374 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap&subset=vietnamese');
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #fafafa;
+
+}
+.wrapper {
+    position: relative;
+    min-height: 100vh;
+}
+.body-pagecontent {
+    padding-bottom: 2rem;    /* Footer height */
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 95%;
+    height: 2.5rem;            /* Footer height */
+}
+p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    height: 100vh;
+    z-index: 999;
+    background-color: #fafafa;
+    color: #999;
+    transition: all 0.3s;
+    overflow-y: scroll;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+#sidebar.active {
+    left: 0;
+}
+
+#dismiss {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background: rgb(255, 169, 63);
+    color: #fff;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+#dismiss:hover {
+    background: #fff;
+    color:  rgb(255,140,0);
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: rgb(255, 169, 63);
+    color: #fff;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+ 
+}   
+
+#sidebar ul p {
+    color: rgb(255, 169, 63);
+    font-weight: bold;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    background-color: #fafafa;
+}
+#sidebar ul li a:hover {
+    color: #fff;
+    background: rgb(255, 169, 63);
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: rgb(255, 169, 63);
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background:#fff;
+    color: black;
+}
+.Icon-team{
+    color : darkorange !important;    
+    padding-left : 50px !important;
+}
+.Icon-user:hover  {
+    color : darkorange;
+}
+.dropdown{
+    padding-left:80px;
+}
+
+
+/* ---------------------------------------------------
+    CONTENT STYLE Main
+----------------------------------------------------- */
+
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+#info_Team a {
+    
+    margin-left: 20px;
+}
+#info_Team a:hover {
+    color: blue;
+    text-decoration: underline;
+}
+/* ---------------------------------------------------
+    CONTENT Admin
+----------------------------------------------------- */
+
+.ql-cuphoc-item:hover{
+    color:darkorange;
+}
+
+.title-page {
+    font-size: 30px;
+    padding-left: 5px;
+    margin-left: 10px;
+    border-left: 7px solid rgb(255, 169, 63);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+.box {
+    background-color: #fafafa;
+    border-radius: 6px;
+    box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+    color: #4a4a4a;
+    display: block;
+    padding: 1rem;
+}
+.panel table th {
+    width: 100%;
+    display: block;
+    padding-top: 5px;
+    font-weight: 700;
+    color: #f18121;
+}
+.panel table td {
+    padding: 4px 0 15px;
+    width: 100%;
+    display: block;
+}
+.panel table  {
+    width: 50%;
+    margin: 0 auto;
+}
+.panel table tbody {
+    width: 80%;
+}
+.panel table .select {
+    width: 100%;
+}
+.menu div .card:hover {
+    background-color: rgb(255, 169, 63);
+    cursor: pointer;
+}
+.menu div .card {
+    background-color: #fafafa;
+}
+.ul.pagination    
+{    
+    display: inline-block;    
+    padding: 0;    
+    margin: 0;    
+}    
+    
+ul.pagination li    
+{    
+    display: inline;    
+}    
+    
+ul.pagination li a    
+{    
+    color: black;    
+    float: left;    
+    padding: 8px 16px;    
+    text-decoration: none;    
+    transition: background-color .3s;    
+}    
+    
+ul.pagination li a.active    
+{    
+    background-color: #4CAF50;    
+    color: white;    
+}    
+    
+ul.pagination li a:hover:not(.active)    
+{    
+    background-color: #ddd;    
+}  
+#btnChonHS:hover {
+    background: rgb(255, 169, 63);
+    cursor: pointer;
+}
+#panelTKB div div {
+    border-style: solid;
+    border-width: 1px;
+}
+@media all and (min-width : 944px) {
+    #panelTKB_MT {
+        display: block;
+    }
+    #panelTKB_DT {
+        display: none;
+    }
+}
+@media all and (max-width : 944px) {
+    #panelTKB_MT {
+        display: none;
+    }
+    #panelTKB_DT {
+        display: block;
+    }
+}
+@media all and (max-width : 550px) {
+    .container-fluid {
+        padding: 0;
+    }
+    .card-body {
+        padding: 5px;
+    }
+    .wrapper #content {
+        padding: 5px;
+    }
+}
+@media all and (max-width : 480px) {
+    .Icon-team {
+        display: none;
+    }
+}
+@media all and (max-width : 325px) {
+    .wrapper #content {
+        padding: 1px;
+    }
+}
+/* ---------------------------------------------------
+    PreLoader
+----------------------------------------------------- */
+.loader-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(255, 169, 63);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.loader {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    border: 4px solid #Fff;
+    animation: loader 2s infinite ease;
+}
+.loader-inner {
+    vertical-align: top;
+    display: inline-block;
+    width: 100%;
+    background-color: #fff;
+    animation: loader-inner 2s infinite ease-in;
+}
+@keyframes loader {
+    0% { transform: rotate(0deg);}
+    25% { transform: rotate(180deg);}
+    50% { transform: rotate(180deg);}
+    75% { transform: rotate(360deg);}
+    100% { transform: rotate(360deg);}
+}
+@keyframes loader-inner {
+    0% { height: 0%;}
+    25% { height: 0%;}
+    50% { height: 100%;}
+    75% { height: 100%;}
+    100% { height: 0%;}
+}
