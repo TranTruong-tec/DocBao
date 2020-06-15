@@ -310,13 +310,14 @@
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Shared\_LayoutTrangChu.cshtml" />
     <Content Include="Views\TrangChu\TrangChu.cshtml" />
-    <Content Include="Views\TrangChu\LoadBaiVietPartial.cshtml" />
-    <Content Include="Views\LoaiBaiViet\LoaiBaiViet.cshtml" />
-    <Content Include="Views\LoaiBaiViet\BaiVietTheoLoai.cshtml" />
+    <Content Include="Views\BaiViet\NhapBaiViet.cshtml" />
+    <Content Include="Views\BaiViet\GetTop.cshtml" />
+    <Content Include="Views\BaiViet\Search.cshtml" />
+    <Content Include="Views\BaiViet\QLBaiViet.cshtml" />
+    <Content Include="Views\BaiViet\XemChiTiet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\BaiViet\" />
     <Folder Include="Views\TaiKhoan\" />
   </ItemGroup>
   <ItemGroup>
