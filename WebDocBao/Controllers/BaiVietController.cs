@@ -36,6 +36,7 @@ namespace WebDocBao.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
 
         public ActionResult NhapBaiViet(BaiViet bv, HttpPostedFileBase myfileImage)
         {

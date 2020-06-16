@@ -3,7 +3,7 @@
     ViewBag.Title = "NhapBaiViet";
     Layout = "~/Views/Shared/_LayoutTrangChu.cshtml";
 }
-<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <link href="~/Assets/Css/styleTrangChu.css" rel="stylesheet" />
 
@@ -26,7 +26,7 @@
         <div class="form-group">
             <label>Nội dung tóm tắt:</label>
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.noiDungTomTat)
+                @Html.EditorFor(model => model.noiDungTomTat)
                 @Html.ValidationMessageFor(model => model.noiDungTomTat)
             </div>
         </div>
@@ -34,8 +34,8 @@
         <div class="form-group">
             <label>Nội dung chính:</label>
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.noiDungChinh, new { @class = "ckeditor", @name = "editor" })
-                @Html.ValidationMessageFor(model => model.noiDungChinh)
+                @Html.TextAreaFor(model => model.noiDungChinh, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.noiDungChinh,"", new { @class = "text-danger" })
             </div>
             <div class="form-group">
                 <label>Ngày đăng:</label>

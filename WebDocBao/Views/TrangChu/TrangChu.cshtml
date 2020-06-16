@@ -7,7 +7,7 @@
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
-<h2>TrangChu</h2>
+
 <script>
         var pageNo = 0;
         var pageCount =@( ViewBag.pageCount)
@@ -75,13 +75,19 @@
 
 <!--Form Tìm kiếm -->
 <!-- finish-->
+@*<div id="tinmoi">
+        <a href="@Url.Action("XemChiTiet", "BaiViet")">
+        <img src="~/Content/images/anhtt.jpg" style=" width: 1000px;height:400px; text-align:left"></a>
+    </div>*@
 
-<div id="tinmoi">
-    <a href="@Url.Action("XemChiTiet", "BaiViet")"><img src="~/Content/images/anhtt.jpg" style=" width: 1000px;height:400px; text-align:left"></a>
+
+<div id="result">
+    <a href="@Url.Action("TrangChu", "TrangChu")">
+        <img src="~/Content/images/h14.PNG" />
+        
+    </a>
 </div>
 
-
-<div id="result"> <a href="@Url.Action("TrangChu", "TrangChu")"> <img src="../../Content/images/h14.png" /></a> </div>
 
 <div class="loading">Loading...</div>
 <style>

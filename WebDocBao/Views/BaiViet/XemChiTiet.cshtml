@@ -56,7 +56,7 @@
 <div id="chitiet">
     <div id="tuaBaiViet" style="text-align:center">@bv.tuaBaiViet</div>
     <br />
-    <img src="../../Content/images/@bv.hinhAnh" width="300" height="300" align="left" hspace="20" />
+    <img src="~/Content/images/@bv.hinhAnh" width="300" height="300" align="left" hspace="20" />
     <br />
     <div id="maLoai" style="">Loại bài viết:@ViewBag.TenLoaiBV</div>
 
@@ -65,15 +65,5 @@
 </div>
 <div id="link">@Html.ActionLink("Về trang trước", null, null, null, new { Href = Request.UrlReferrer })</div>
 
-@{
-    List<Comment> lstComment = (List<Comment>)ViewBag.DSComment;
-    <div id="lstCom">
-        <h5>Các comment </h5>
-        @foreach (Comment c in lstComment)
-        {
-            <div style="border:1px dotted double"><h6>@c.maTaiKhoan:</h6><p>@c.noiDung</p></div>
-            <p style="text-align:right; font-style:italic">@c.ngayComment.ToString()</p>
-        }
-    </div>
-}
+
 

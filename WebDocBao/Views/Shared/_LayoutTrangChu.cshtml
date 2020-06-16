@@ -9,12 +9,15 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href="~/Assets/Css/styleTrangChu.css" rel="stylesheet" />
+    <script src="~/Scripts/TextArea/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({ selector: 'textarea' });</script>
+
 </head>
 <body>
 
     <div id="main">
         <div id="dautrang">
-            <a href="@Url.Action("TrangChu", "TrangChu")"> <img src="../../Content/images/logo.png" /></a>
+            <a href="@Url.Action("TrangChu", "TrangChu")"> @*<img src="../../Content/images/logo.png" /></a>*@
         </div>
 
         <div>
@@ -72,7 +75,7 @@
                 }
             }
             <a href="@Url.Action("Login", "Admin")">AdminPage  |</a>
-            <a href="@Url.Action("Help", "TrangChu")">Liên lạc </a>  &nbsp;  &nbsp;
+            @*<a href="@Url.Action("Help", "TrangChu")">Liên lạc </a>  &nbsp;  &nbsp;*@
 
 
         </div>
