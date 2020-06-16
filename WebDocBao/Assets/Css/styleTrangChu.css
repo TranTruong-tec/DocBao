@@ -14,7 +14,7 @@ body {
     margin: 0px auto;
     width: 1000px;
     // border:1px solid black;
-    background-color: #f2f2f2;
+    background-color: white;
 }
 
 #dautrang {
@@ -28,7 +28,7 @@ body {
     width: 1000px;
     margin-top: 2px;
     height: auto;
-    background-color: #16469d;
+    background-color: #00ffff;
     float: left;
     display: block;
     /*border:5px solid green;*/
@@ -51,7 +51,7 @@ body {
                 display: inline-block;
                 font-weight: bold;
                 text-decoration: none;
-                color: white;
+                color: #ff006e;
                 text-align: center;
                 // border-right: 4px solid #3e588e;
                 padding: 0px 5px;
@@ -80,7 +80,7 @@ body {
 }
 
     #ngay a {
-        text-decoration: none;
+        text-decoration: black;
     }
 
 #noidung {

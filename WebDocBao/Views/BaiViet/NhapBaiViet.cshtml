@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_LayoutTrangChu.cshtml";
 }
 
-<h2>NhapBaiViet</h2>
+
 @using (Html.BeginForm("NhapBaiViet", "BaiViet", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()

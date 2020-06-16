@@ -3,7 +3,8 @@
     <head>
         <meta name="viewport" content="width=device-width" />
         <title>@ViewBag.Title Trang dành cho quản trị</title>
-        
+
+        <link href="~/Assets/Css/MainStyle.css" rel="stylesheet" />
         <link href="~/Assets/Css/StyleSheetADMIN.css" rel="stylesheet" />
     </head>
     <body>
@@ -11,14 +12,14 @@
 
 
             <div id="left-imag2">
-                <h3 style="font-size:30px"> ADMIN PAGE</h3>
+                <h3 style="font-size:30px">Trang Quản Lý</h3>
                 <br />
 
                 <ul id="ql">
-                    <li><a href="@Url.Action("TrangChu","TrangChu")">Trang Chủ</a></li>                   
-                    <li><a href="@Url.Action("QLLoaiBaiViet","LoaiBaiViet")">Quản lý loại bài viết</a></li>
-                    <li><a href="@Url.Action("QLBaiViet","BaiViet")">Quản lý bài viết</a></li>
-                    <li><a href="@Url.Action("Index","Admin")">Quản lý tài khoản</a></li>
+                    <li><a href="@Url.Action("TrangChu","TrangChu")" style="color:red">Trang Chủ</a></li>                   
+                    <li><a href="@Url.Action("QLLoaiBaiViet","LoaiBaiViet")" style="color:red" >Quản lý loại bài viết</a></li>
+                    <li><a href="@Url.Action("QLBaiViet","BaiViet")"style="color:red">Quản lý bài viết</a></li>
+                    <li><a href="@Url.Action("Index","Admin")"style="color:red">Quản lý tài khoản</a></li>
                     
                 </ul>
 

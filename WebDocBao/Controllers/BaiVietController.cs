@@ -29,6 +29,7 @@ namespace WebDocBao.Controllers
             Session["maBaiViet"] = bv.maBaiViet;
             return View();
         }
+        [SessionTimeout]
         [HttpGet]
 
         public ActionResult NhapBaiViet()
