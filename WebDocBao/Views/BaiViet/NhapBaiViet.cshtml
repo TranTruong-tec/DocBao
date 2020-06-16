@@ -4,10 +4,7 @@
     Layout = "~/Views/Shared/_LayoutTrangChu.cshtml";
 }
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<link href="~/Assets/Css/styleTrangChu.css" rel="stylesheet" />
-
-
+<h2>NhapBaiViet</h2>
 @using (Html.BeginForm("NhapBaiViet", "BaiViet", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
@@ -16,7 +13,7 @@
         <hr />
         @Html.ValidationSummary(true)
         <div class="form-group">
-            <label>Tự Bài Viết:</label>
+           <label>Tựa bài viết:</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.tuaBaiViet)
                 @Html.ValidationMessageFor(model => model.tuaBaiViet)
@@ -26,7 +23,7 @@
         <div class="form-group">
             <label>Nội dung tóm tắt:</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.noiDungTomTat)
+                @Html.TextAreaFor(model => model.noiDungTomTat)
                 @Html.ValidationMessageFor(model => model.noiDungTomTat)
             </div>
         </div>
@@ -34,20 +31,20 @@
         <div class="form-group">
             <label>Nội dung chính:</label>
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.noiDungChinh, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.noiDungChinh,"", new { @class = "text-danger" })
+                @Html.TextAreaFor(model => model.noiDungChinh, new { @class = "ckeditor", @name = "editor" })
+                @Html.ValidationMessageFor(model => model.noiDungChinh)
             </div>
             <div class="form-group">
                 <label>Ngày đăng:</label>
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.ngayDang, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                    @Html.EditorFor(model => model.ngayDang, new { htmlAttributes = new { @class = "form-control" ,type="date"} })
                     @Html.ValidationMessageFor(model => model.ngayDang, "", new { @class = "text-danger" })
                 </div>
 
 
             </div>
             <div class="form-group">
-                <label>Mã Loại:</label>
+                <label>Thể Loại::</label>
                 <div class="col-md-10">
                     @Html.DropDownListFor(model => model.maLoai, (SelectList)ViewBag.LoaiBaiViet, string.Empty)
                 </div>

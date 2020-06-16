@@ -1,9 +1,10 @@
-﻿@*<!DOCTYPE html>
+﻿<!DOCTYPE html>
     <html>
     <head>
         <meta name="viewport" content="width=device-width" />
         <title>@ViewBag.Title Trang dành cho quản trị</title>
-        <link href="~/Content/StyleSheetADMIN.css" rel="stylesheet" />
+        
+        <link href="~/Assets/Css/StyleSheetADMIN.css" rel="stylesheet" />
     </head>
     <body>
         <div id="main">
@@ -14,12 +15,11 @@
                 <br />
 
                 <ul id="ql">
-                    <li><a href="@Url.Action("TrangChu","TrangChu")">Trang Chủ</a></li>
-                    <li><a href="@Url.Action("Login","Admin")">Đăng nhập Adnin</a></li>
+                    <li><a href="@Url.Action("TrangChu","TrangChu")">Trang Chủ</a></li>                   
                     <li><a href="@Url.Action("QLLoaiBaiViet","LoaiBaiViet")">Quản lý loại bài viết</a></li>
                     <li><a href="@Url.Action("QLBaiViet","BaiViet")">Quản lý bài viết</a></li>
                     <li><a href="@Url.Action("Index","Admin")">Quản lý tài khoản</a></li>
-                    <li><a href="@Url.Action("QLBaiComment","Comment")">Quản lý comment</a></li>
+                    
                 </ul>
 
             </div>
@@ -37,8 +37,8 @@
         </div>
 
     </body>
-    </html>*@
-<!DOCTYPE html>
+    </html>
+@*<!DOCTYPE html>
 <html>
 
 <head>
@@ -48,15 +48,15 @@
 
     <title>Trang Quản Lý</title>
 
-    <!-- Bootstrap CSS CDN -->
+     Bootstrap CSS CDN 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <!-- Scrollbar Custom CSS -->
+     Scrollbar Custom CSS 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
-    <!-- Font Awesome JS -->
+     Font Awesome JS 
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-    <!-- Our Custom CSS -->
+     Our Custom CSS 
     <script src="~/Scripts/TextArea/tinymce/js/tinymce/tinymce.min.js"></script>
     <script>tinymce.init({ selector: 'textarea' });</script>
 
@@ -68,7 +68,7 @@
 <body>
 
     <div class="wrapper">
-        <!-- Sidebar  -->
+         Sidebar  
         <nav id="sidebar">
             <div id="dismiss">
                 <i class="fas fa-arrow-left"></i>
@@ -100,7 +100,7 @@
 
         </nav>
 
-        <!-- Page Content  -->
+         Page Content  
         <div id="content">
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light ">
@@ -129,26 +129,26 @@
                     @RenderBody()
                 </div>
 
-                <!-- Footer -->
+                 Footer 
                 @Html.Partial("_FooterPartial")
-                <!-- Footer -->
+                 Footer 
             </div>
         </div>
     </div>
     
  
 
-    @*<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>*@
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="~/Scripts/jquery-3.4.1.js"></script>
-    <!-- Popper.JS -->
+     Popper.JS 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
+     Bootstrap JS 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <!-- jQuery Custom Scroller CDN -->
+     jQuery Custom Scroller CDN 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
 
 </body>
 
-</html>
+</html>*@
 

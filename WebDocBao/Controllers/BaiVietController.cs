@@ -14,6 +14,7 @@ namespace WebDocBao.Controllers
         // GET: BaiViet
         private DocBaoEntities1 db = new DocBaoEntities1();
 
+        
         public ActionResult XemChiTiet(string maBV)
         {
             BaiViet bv = db.BaiViets.SingleOrDefault(n => n.maBaiViet == maBV);
@@ -28,16 +29,15 @@ namespace WebDocBao.Controllers
             Session["maBaiViet"] = bv.maBaiViet;
             return View();
         }
+        [HttpGet]
 
         public ActionResult NhapBaiViet()
         {
             ViewBag.LoaiBaiViet = new SelectList(db.LoaiBaiViets, "maLoai", "tenLoai");
             return View();
         }
-
         [HttpPost]
         [ValidateInput(false)]
-
         public ActionResult NhapBaiViet(BaiViet bv, HttpPostedFileBase myfileImage)
         {
             string don = DateTime.Now.ToString("yyyyMMddhhmmss");
@@ -57,12 +57,11 @@ namespace WebDocBao.Controllers
                 var path = Path.Combine(Server.MapPath("~/Content/images"), fileName);
                 myfileImage.SaveAs(path);
                 db.SaveChanges();
-                return RedirectToAction("TrangChu", "TrangChu");
+                return RedirectToAction("QLBaiViet");
             }
             ViewBag.LoaiBaiViet = new SelectList(db.LoaiBaiViets, "maLoai", "tenLoai", bv.maLoai);
             return View(bv);
         }
-        [HttpGet]
         public ActionResult Sua(string id)
         {
             BaiViet bv = db.BaiViets.SingleOrDefault(n => n.maBaiViet == id);
@@ -163,13 +162,13 @@ namespace WebDocBao.Controllers
             string[] info = System.IO.File.ReadAllLines(path);
             BaiViet s = new BaiViet();
 
-            ViewBag.hinhAnh = "../../Hinh" + s.hinhAnh;
+            ViewBag.hinhAnh = "~/Content/igmaes" + s.hinhAnh;
             return View("TrangChu");
 
 
         }
         //[Authorize(Users = "admin")]
-        //[SessionTimeout]
+        [SessionTimeout]
         public ActionResult QLBaiViet()
         {
             List<BaiViet> lst = db.BaiViets.ToList<BaiViet>();

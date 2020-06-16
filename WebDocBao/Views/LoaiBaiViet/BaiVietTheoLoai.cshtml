@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_LayoutTrangChu.cshtml";
 }
 
+
 @{
     <div>
 
@@ -24,7 +25,7 @@
 
                         </div>
                         <div id="hinh">
-                            <img src="../../Content/images/@item.hinhAnh" width="150" height="150" align="left" hspace="10" />
+                            <img src="@Url.Content("~/Content/images/"+item.hinhAnh)" width="150" height="150" align="left" hspace="10" />
                         </div>
 
                         <div>@item.noiDungTomTat</div>
