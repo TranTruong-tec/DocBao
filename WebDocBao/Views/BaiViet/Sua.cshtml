@@ -7,7 +7,7 @@
 
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Sua", "BaiViet", FormMethod.Post, new { enctype="multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -59,7 +59,7 @@
             <label>Loại:</label>
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.maLoai, (SelectList)ViewBag.LoaiBaiViet, string.Empty)
-                @Html.ValidationMessageFor(model => model.maLoai, "", new { @class = "text-danger" })
+                
             </div>
         </div>
 
@@ -67,7 +67,7 @@
             <label>Hình Ảnh:</label>
             <div class="col-md-10">
                 <input type="file" name="myfileImage" class="fileupload1" /><hr />
-
+                
                 <img src="@Url.Content("~/Content/images/" + Model.hinhAnh)" width="120px" /> (Hình có sẵn)
             </div>
         </div>

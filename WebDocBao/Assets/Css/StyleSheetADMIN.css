@@ -5,7 +5,7 @@
 }
 h1{
     font-family:'Times New Roman', Times, serif;
-   // border:1px solid black;
+   /*// border:1px solid black;*/
     text-align:center;
 }
 a{
@@ -18,7 +18,7 @@ a{
     margin: 0px auto;
     width: 1000px;
     height: auto;
-    border:1px solid;
+    /*//border:1px solid;*/
     text-align: center;
     background-color: #ffffff;
     margin-bottom: 10px;

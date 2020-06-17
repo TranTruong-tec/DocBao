@@ -2466,7 +2466,6 @@
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Shared\_LayoutTrangChu.cshtml" />
     <Content Include="Views\TrangChu\TrangChu.cshtml" />
-    <Content Include="Views\BaiViet\GetTop.cshtml" />
     <Content Include="Views\BaiViet\Search.cshtml" />
     <Content Include="Views\BaiViet\QLBaiViet.cshtml" />
     <Content Include="Views\BaiViet\XemChiTiet.cshtml" />

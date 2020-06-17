@@ -58,11 +58,12 @@ namespace WebDocBao.Controllers
                 var path = Path.Combine(Server.MapPath("~/Content/images"), fileName);
                 myfileImage.SaveAs(path);
                 db.SaveChanges();
-                return RedirectToAction("QLBaiViet");
+                return RedirectToAction("TrangChu","TrangChu");
             }
             ViewBag.LoaiBaiViet = new SelectList(db.LoaiBaiViets, "maLoai", "tenLoai", bv.maLoai);
             return View(bv);
         }
+        [HttpGet]
         public ActionResult Sua(string id)
         {
             BaiViet bv = db.BaiViets.SingleOrDefault(n => n.maBaiViet == id);
@@ -79,18 +80,18 @@ namespace WebDocBao.Controllers
         [ValidateInput(false)]
         public ActionResult Sua(BaiViet bv, HttpPostedFileBase myfileImage)
         {
-            ViewBag.LoaiBaiViet = new SelectList(db.LoaiBaiViets, "maLoai", "tenLoai");
-            if(myfileImage==null)
+            ViewBag.LoaiBaiViet = new SelectList(db.LoaiBaiViets, "maLoai", "tenLoai", bv.maLoai);
+            if (myfileImage==null)
             {
                 ViewBag.ThongBao = "Vui lòng chọn Ảnh Bìa";
-                return View();
+                return View(bv);
             }
             else
             {
                 if(ModelState.IsValid)
                 {
                     var filename = Path.GetFileName(myfileImage.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Content/images"), filename);
+                    var path = Path.Combine(Server.MapPath("~/Content/images/"), filename);
                     if (System.IO.File.Exists(path))
                         ViewBag.ThongBao = "Hình ảnh đã tồn tại";
                     else
@@ -101,20 +102,20 @@ namespace WebDocBao.Controllers
                     UpdateModel(bv);
                     db.SaveChanges();
                 }
-                return RedirectToAction("QLBaiViet");
+                return RedirectToAction("TrangChu", "TrangChu");
             }    
         }
-        public ActionResult ChiTiet(string id)
-        {
-            BaiViet bv = db.BaiViets.SingleOrDefault(n => n.maBaiViet == id);
-            ViewBag.maBV = bv.maBaiViet;
-            if(bv == null)
-            {
-                Response.StatusCode = 404;
-                return null;
-            }    
-            return View(bv);
-        }
+        //public ActionResult ChiTiet(string id)
+        //{
+        //    BaiViet bv = db.BaiViets.SingleOrDefault(n => n.maBaiViet == id);
+        //    ViewBag.maBV = bv.maBaiViet;
+        //    if(bv == null)
+        //    {
+        //        Response.StatusCode = 404;
+        //        return null;
+        //    }    
+        //    return View(bv);
+        //}
         [HttpGet]
         public ActionResult Xoa(string id)
         {
@@ -143,12 +144,7 @@ namespace WebDocBao.Controllers
         }
 
 
-        public ActionResult GetTop()
-        {
-            db = new DocBaoEntities1();
-            var data = db.BaiViets.OrderByDescending(x => x.tuaBaiViet).Take(10).ToList();
-            return View(data);
-        }
+        
         public ActionResult Search(string query)
         {
             db = new DocBaoEntities1();
